@@ -9,7 +9,7 @@ Unreleased
 -   Bump MarkupSafe dependency to >=1.1.
 -   Bump Babel optional dependency to >=2.1.
 -   Remove code that was marked deprecated.
--
+-   I18N extension doesn't use ``ugettext``.
 
 
 Version 2.11.0

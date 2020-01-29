@@ -26,11 +26,7 @@ from .runtime import concat
 from .utils import contextfunction
 from .utils import import_string
 
-# the only real useful gettext functions for a Jinja template.  Note
-# that ugettext must be assigned to gettext as Jinja doesn't support
-# non unicode strings.
 GETTEXT_FUNCTIONS = ("_", "gettext", "ngettext")
-
 _ws_re = re.compile(r"\s*\n\s*")
 
 
@@ -192,13 +188,7 @@ class InternationalizationExtension(Extension):
         )
 
     def _install(self, translations, newstyle=None):
-        gettext = getattr(translations, "ugettext", None)
-        if gettext is None:
-            gettext = translations.gettext
-        ngettext = getattr(translations, "ungettext", None)
-        if ngettext is None:
-            ngettext = translations.ngettext
-        self._install_callables(gettext, ngettext, newstyle)
+        self._install_callables(translations.gettext, translations.ngettext, newstyle)
 
     def _install_null(self, newstyle=None):
         self._install_callables(
